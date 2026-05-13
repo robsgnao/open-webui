@@ -71,6 +71,12 @@
 					metaThemeColorTag.setAttribute('content', '#171717');
 				}
 
+				const cachedFavicon = localStorage.getItem('faviconUrl');
+				if (cachedFavicon) {
+					const icons = document.querySelectorAll('link[rel="icon"], link[rel="shortcut icon"]');
+					icons.forEach((el) => el.setAttribute('href', cachedFavicon));
+				}
+
 				const preloadHref = document.documentElement.classList.contains('dark')
 					? '/static/splash-dark.png'
 					: '/static/splash.png';

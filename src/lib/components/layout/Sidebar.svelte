@@ -69,6 +69,7 @@
 	import SearchModal from './SearchModal.svelte';
 	import FolderModal from './Sidebar/Folders/FolderModal.svelte';
 	import Sidebar from '../icons/Sidebar.svelte';
+	import Logo from '../common/Logo.svelte';
 	import PinnedModelList from './Sidebar/PinnedModelList.svelte';
 	import Note from '../icons/Note.svelte';
 	import Code from '../icons/Code.svelte';
@@ -801,11 +802,7 @@
 						aria-label={$showSidebar ? $i18n.t('Close Sidebar') : $i18n.t('Open Sidebar')}
 					>
 						<div class=" self-center flex items-center justify-center size-9">
-							<img
-								src="{WEBUI_BASE_URL}/static/favicon.png"
-								class="sidebar-new-chat-icon size-6 rounded-full group-hover:hidden"
-								alt=""
-							/>
+							<Logo size="size-6" className="sidebar-new-chat-icon rounded-full group-hover:hidden" />
 
 							<Sidebar className="size-5 hidden group-hover:flex" />
 						</div>
@@ -1009,12 +1006,7 @@
 					draggable="false"
 					on:click={newChatHandler}
 				>
-					<img
-						crossorigin="anonymous"
-						src="{WEBUI_BASE_URL}/static/favicon.png"
-						class="sidebar-new-chat-icon size-6 rounded-full"
-						alt=""
-					/>
+					<Logo size="size-6" className="sidebar-new-chat-icon rounded-full" />
 				</a>
 
 				<a href="/" class="flex flex-1 px-0.5" on:click={newChatHandler}>

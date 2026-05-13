@@ -6,6 +6,7 @@
 
 	import { createEventDispatcher, onMount } from 'svelte';
 	import XMark from '$lib/components/icons/XMark.svelte';
+	import Logo from '$lib/components/common/Logo.svelte';
 
 	const dispatch = createEventDispatcher();
 
@@ -109,7 +110,7 @@
 	</button>
 
 	<div class="shrink-0 self-top -translate-y-0.5">
-		<img src="{WEBUI_BASE_URL}/static/favicon.png" alt="favicon" class="size-6 rounded-full" />
+		<Logo size="size-6" className="rounded-full" />
 	</div>
 
 	<div>

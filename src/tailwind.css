@@ -2,6 +2,15 @@
 
 @config '../tailwind.config.js';
 
+:root {
+	--brand-primary: oklch(0.5 0.2 250);
+	--brand-accent: oklch(0.6 0.2 180);
+	--brand-logo-url: none;
+	--brand-logo-dark-url: none;
+	--brand-favicon-url: none;
+	--brand-background-image-url: none;
+}
+
 @theme {
 	--color-gray-50: oklch(0.98 0 0);
 	--color-gray-100: oklch(0.94 0 0);
@@ -15,6 +24,8 @@
 	--color-gray-850: oklch(0.27 0 0);
 	--color-gray-900: oklch(0.2 0 0);
 	--color-gray-950: oklch(0.16 0 0);
+	--color-brand-primary: var(--brand-primary, oklch(0.5 0.2 250));
+	--color-brand-accent: var(--brand-accent, oklch(0.6 0.2 180));
 }
 
 /*

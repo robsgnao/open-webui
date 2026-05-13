@@ -12,6 +12,17 @@ import emojiShortCodes from '$lib/emoji-shortcodes.json';
 // Backend
 export const WEBUI_NAME = writable(APP_NAME);
 
+export type BrandingConfig = {
+	favicon_url: string;
+	logo_url: string;
+	logo_dark_url: string;
+	default_background_image_url: string;
+	primary_color: string;
+	accent_color: string;
+};
+
+export const branding = writable<BrandingConfig | undefined>(undefined);
+
 export const WEBUI_VERSION = writable(null);
 export const WEBUI_DEPLOYMENT_ID = writable(null);
 
@@ -277,6 +288,7 @@ type Config = {
 	license_metadata: any;
 	status: boolean;
 	name: string;
+	branding?: BrandingConfig;
 	version: string;
 	default_locale: string;
 	default_models: string;

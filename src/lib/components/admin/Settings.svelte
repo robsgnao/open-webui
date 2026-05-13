@@ -48,7 +48,8 @@
 			'audio',
 			'images',
 			'pipelines',
-			'db'
+			'db',
+			'branding'
 		].includes(tabFromPath)
 			? tabFromPath
 			: 'general';
@@ -243,6 +244,21 @@
 			title: 'Database',
 			route: '/admin/settings/db',
 			keywords: ['database', 'export', 'import', 'backup', 'chats', 'users']
+		},
+		{
+			id: 'branding',
+			title: 'Branding',
+			route: '/admin/settings/branding',
+			keywords: [
+				'branding',
+				'logo',
+				'favicon',
+				'color',
+				'theme',
+				'appearance',
+				'background',
+				'customize'
+			]
 		}
 	];
 
@@ -496,6 +512,19 @@
 								d="M8 12.5c1.84 0 3.579-.37 4.914-1.037.366-.183.74-.41 1.086-.684V12c0 1.657-2.686 3-6 3s-6-1.343-6-3v-1.22c.346.273.72.5 1.087.683C4.42 12.131 6.16 12.5 8 12.5Z"
 							/>
 						</svg>
+					{:else if tab.id === 'branding'}
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 16 16"
+							fill="currentColor"
+							class="w-4 h-4"
+						>
+							<path
+								fill-rule="evenodd"
+								d="M11.013 2.513a1.75 1.75 0 0 1 2.475 2.474L6.226 12.25a2.751 2.751 0 0 1-.892.596l-2.047.848a.75.75 0 0 1-.98-.98l.848-2.047a2.75 2.75 0 0 1 .596-.892l7.262-7.261Z"
+								clip-rule="evenodd"
+							/>
+						</svg>
 					{/if}
 				</div>
 				<div class=" self-center">{$i18n.t(tab.title)}</div>
@@ -584,6 +613,8 @@
 					toast.success($i18n.t('Settings saved successfully!'));
 				}}
 			/>
+		{:else if selectedTab === 'branding'}
+			<Branding />
 		{/if}
 	</div>
 </div>

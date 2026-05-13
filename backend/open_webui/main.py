@@ -385,6 +385,12 @@ from open_webui.config import (
     WEBUI_AUTH,
     WEBUI_NAME,
     WEBUI_BANNERS,
+    WEBUI_FAVICON_URL,
+    WEBUI_LOGO_URL,
+    WEBUI_LOGO_DARK_URL,
+    WEBUI_DEFAULT_BACKGROUND_IMAGE_URL,
+    WEBUI_PRIMARY_COLOR,
+    WEBUI_ACCENT_COLOR,
     WEBHOOK_URL,
     ADMIN_EMAIL,
     SHOW_ADMIN_DETAILS,
@@ -784,6 +790,12 @@ app.state.config = AppConfig(
 app.state.redis = None
 
 app.state.WEBUI_NAME = WEBUI_NAME
+app.state.WEBUI_FAVICON_URL = WEBUI_FAVICON_URL
+app.state.WEBUI_LOGO_URL = WEBUI_LOGO_URL
+app.state.WEBUI_LOGO_DARK_URL = WEBUI_LOGO_DARK_URL
+app.state.WEBUI_DEFAULT_BACKGROUND_IMAGE_URL = WEBUI_DEFAULT_BACKGROUND_IMAGE_URL
+app.state.WEBUI_PRIMARY_COLOR = WEBUI_PRIMARY_COLOR
+app.state.WEBUI_ACCENT_COLOR = WEBUI_ACCENT_COLOR
 app.state.LICENSE_METADATA = None
 
 
@@ -2351,6 +2363,14 @@ async def get_app_config(request: Request):
         **({'onboarding': True} if onboarding else {}),
         'status': True,
         'name': app.state.WEBUI_NAME,
+        'branding': {
+            'favicon_url': app.state.WEBUI_FAVICON_URL,
+            'logo_url': app.state.WEBUI_LOGO_URL,
+            'logo_dark_url': app.state.WEBUI_LOGO_DARK_URL,
+            'default_background_image_url': app.state.WEBUI_DEFAULT_BACKGROUND_IMAGE_URL,
+            'primary_color': app.state.WEBUI_PRIMARY_COLOR,
+            'accent_color': app.state.WEBUI_ACCENT_COLOR,
+        },
         'version': VERSION,
         'default_locale': str(DEFAULT_LOCALE),
         'oauth': {'providers': {name: config.get('name', name) for name, config in OAUTH_PROVIDERS.items()}},

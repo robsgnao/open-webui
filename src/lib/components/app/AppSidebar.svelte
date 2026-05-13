@@ -2,6 +2,7 @@
 	import Tooltip from '$lib/components/common/Tooltip.svelte';
 	import Plus from '$lib/components/icons/Plus.svelte';
 	import { WEBUI_BASE_URL } from '$lib/constants';
+	import Logo from '$lib/components/common/Logo.svelte';
 
 	let selected = '';
 </script>
@@ -54,12 +55,7 @@
 				selected = '';
 			}}
 		>
-			<img
-				src="{WEBUI_BASE_URL}/static/favicon.png"
-				class="size-10 {selected === '' ? 'rounded-2xl' : 'rounded-full'}"
-				alt="logo"
-				draggable="false"
-			/>
+			<Logo size="size-10" className="{selected === '' ? 'rounded-2xl' : 'rounded-full'}" />
 		</button>
 	</div>
 

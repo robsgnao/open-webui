@@ -37,7 +37,8 @@
 		showFileNavPath,
 		showFileNavDir,
 		pyodideWorker,
-		desktopEvent
+		desktopEvent,
+		branding
 	} from '$lib/stores';
 	import { getFileContentById } from '$lib/apis/files';
 	import { goto } from '$app/navigation';
@@ -1021,6 +1022,24 @@
 			// Save Backend Status to Store
 			await config.set(backendConfig);
 			await WEBUI_NAME.set(backendConfig.name);
+			if (backendConfig.branding) {
+				await branding.set(backendConfig.branding);
+				if (backendConfig.branding.favicon_url) {
+					localStorage.setItem('faviconUrl', backendConfig.branding.favicon_url);
+				}
+				if (backendConfig.branding.primary_color) {
+					document.documentElement.style.setProperty(
+						'--brand-primary',
+						backendConfig.branding.primary_color
+					);
+				}
+				if (backendConfig.branding.accent_color) {
+					document.documentElement.style.setProperty(
+						'--brand-accent',
+						backendConfig.branding.accent_color
+					);
+				}
+			}
 
 			if ($config) {
 				await setupSocket($config.features?.enable_websocket ?? true);
@@ -1134,7 +1153,11 @@
 
 <svelte:head>
 	<title>{$WEBUI_NAME}</title>
-	<link crossorigin="anonymous" rel="icon" href="{WEBUI_BASE_URL}/static/favicon.png" />
+	<link
+		crossorigin="anonymous"
+		rel="icon"
+		href={$branding?.favicon_url || `${WEBUI_BASE_URL}/static/favicon.png`}
+	/>
 
 	<meta name="apple-mobile-web-app-title" content={$WEBUI_NAME} />
 	<meta name="description" content={$WEBUI_NAME} />

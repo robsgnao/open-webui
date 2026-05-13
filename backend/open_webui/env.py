@@ -131,7 +131,13 @@ WEBUI_NAME = os.environ.get('WEBUI_NAME', 'Open WebUI')
 if WEBUI_NAME != 'Open WebUI':
     WEBUI_NAME += ' (Open WebUI)'
 
-WEBUI_FAVICON_URL = 'https://openwebui.com/favicon.png'
+WEBUI_FAVICON_URL = os.environ.get('WEBUI_FAVICON_URL', 'https://openwebui.com/favicon.png')
+
+WEBUI_LOGO_URL = os.environ.get('WEBUI_LOGO_URL', '')
+WEBUI_LOGO_DARK_URL = os.environ.get('WEBUI_LOGO_DARK_URL', '')
+WEBUI_DEFAULT_BACKGROUND_IMAGE_URL = os.environ.get('WEBUI_DEFAULT_BACKGROUND_IMAGE_URL', '')
+WEBUI_PRIMARY_COLOR = os.environ.get('WEBUI_PRIMARY_COLOR', '')
+WEBUI_ACCENT_COLOR = os.environ.get('WEBUI_ACCENT_COLOR', '')
 
 TRUSTED_SIGNATURE_KEY = os.environ.get('TRUSTED_SIGNATURE_KEY', '')
 

@@ -661,23 +661,32 @@
 						{$i18n.t('Chat Background Image')}
 					</div>
 
-					<button
-						aria-labelledby="chat-background-label background-image-url-state"
-						class="p-1 px-3 text-xs flex rounded-sm transition"
-						on:click={() => {
-							if (backgroundImageUrl !== null) {
-								backgroundImageUrl = null;
-								saveSettings({ backgroundImageUrl });
-							} else {
-								filesInputElement.click();
-							}
-						}}
-						type="button"
-					>
-						<span class="ml-2 self-center" id="background-image-url-state"
-							>{backgroundImageUrl !== null ? $i18n.t('Reset') : $i18n.t('Upload')}</span
+					<div class="flex items-center gap-1">
+						<input
+							type="text"
+							placeholder={$i18n.t('Image URL')}
+							class="w-36 text-xs bg-transparent border border-gray-300 dark:border-gray-600 rounded-sm px-2 py-1 outline-none"
+							bind:value={backgroundImageUrl}
+							on:change={() => saveSettings({ backgroundImageUrl })}
+						/>
+						<button
+							aria-labelledby="chat-background-label background-image-url-state"
+							class="p-1 px-3 text-xs flex rounded-sm transition"
+							on:click={() => {
+								if (backgroundImageUrl !== null) {
+									backgroundImageUrl = null;
+									saveSettings({ backgroundImageUrl });
+								} else {
+									filesInputElement.click();
+								}
+							}}
+							type="button"
 						>
-					</button>
+							<span class="ml-2 self-center" id="background-image-url-state"
+								>{backgroundImageUrl !== null ? $i18n.t('Reset') : $i18n.t('Upload')}</span
+							>
+						</button>
+					</div>
 				</div>
 			</div>
 
