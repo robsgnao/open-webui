@@ -5,10 +5,6 @@
 :root {
 	--brand-primary: oklch(0.5 0.2 250);
 	--brand-accent: oklch(0.6 0.2 180);
-	--brand-logo-url: none;
-	--brand-logo-dark-url: none;
-	--brand-favicon-url: none;
-	--brand-background-image-url: none;
 }
 
 @theme {

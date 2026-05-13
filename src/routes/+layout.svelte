@@ -1026,6 +1026,8 @@
 				await branding.set(backendConfig.branding);
 				if (backendConfig.branding.favicon_url) {
 					localStorage.setItem('faviconUrl', backendConfig.branding.favicon_url);
+				} else {
+					localStorage.removeItem('faviconUrl');
 				}
 				if (backendConfig.branding.primary_color) {
 					document.documentElement.style.setProperty(

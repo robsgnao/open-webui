@@ -26,7 +26,6 @@
 	import OnBoarding from '$lib/components/OnBoarding.svelte';
 	import SensitiveInput from '$lib/components/common/SensitiveInput.svelte';
 	import Logo from '$lib/components/common/Logo.svelte';
-	import { redirect } from '@sveltejs/kit';
 
 	const i18n = getContext('i18n');
 
@@ -186,16 +185,18 @@
 />
 
 <div class="w-full h-screen max-h-[100dvh] text-white relative" id="auth-page">
-	<div
-	class="w-full h-full absolute top-0 left-0 bg-cover bg-center bg-no-repeat"
-	style="background-image: {$branding?.default_background_image_url
-		? `url(${$branding.default_background_image_url})`
-		: 'none'}; background-color: {$branding?.default_background_image_url ? 'transparent' : ''}"
-></div>
-<div
-	class="w-full h-full absolute top-0 left-0 {$branding?.default_background_image_url ? '' : 'bg-white dark:bg-black'}"
-	style="{$branding?.default_background_image_url ? 'background: rgba(0,0,0,0.4);' : ''}"
-></div>
+	{#if $branding?.default_background_image_url}
+		<div
+			class="w-full h-full absolute top-0 left-0 bg-cover bg-center bg-no-repeat"
+			style="background-image: url({$branding.default_background_image_url})"
+		></div>
+		<div
+			class="w-full h-full absolute top-0 left-0"
+			style="background: rgba(0,0,0,0.4);"
+		></div>
+	{:else}
+		<div class="w-full h-full absolute top-0 left-0 bg-white dark:bg-black"></div>
+	{/if}
 
 	<div class="w-full absolute top-0 left-0 right-0 h-8 drag-region" />
 

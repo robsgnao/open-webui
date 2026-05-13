@@ -8,13 +8,19 @@
 	export let fallback: string = `${WEBUI_BASE_URL}/static/favicon.png`;
 
 	let imgSrc: string;
-	let isDark = false;
+	let hasError = false;
 
 	const darkQuery =
 		typeof window !== 'undefined' ? window.matchMedia('(prefers-color-scheme: dark)') : null;
 
 	const updateSrc = () => {
-		isDark =
+		if (typeof document === 'undefined') {
+			imgSrc = fallback;
+			return;
+		}
+		hasError = false;
+
+		const isDark =
 			document.documentElement.classList.contains('dark') ||
 			(document.documentElement.classList.contains('light')
 				? false
@@ -33,7 +39,9 @@
 	};
 
 	const onError = (e: Event) => {
-		(e.target as HTMLImageElement).src = fallback;
+		if (hasError) return;
+		hasError = true;
+		(e.currentTarget as HTMLImageElement).src = fallback;
 	};
 
 	onMount(() => {
@@ -51,7 +59,7 @@
 		};
 	});
 
-	$: if ($branding) {
+	$: {
 		updateSrc();
 	}
 </script>
@@ -60,5 +68,7 @@
 	src={imgSrc || fallback}
 	class={[size, className].filter(Boolean).join(' ')}
 	alt="logo"
+	draggable="false"
+	crossorigin="anonymous"
 	on:error={onError}
 />

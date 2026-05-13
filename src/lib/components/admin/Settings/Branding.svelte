@@ -7,7 +7,12 @@
 
 <div class="flex flex-col h-full justify-between text-sm">
 	<div class="overflow-y-scroll max-h-[28rem] md:max-h-full space-y-4">
-		<div class="mb-2 text-sm font-medium">{$i18n.t('Branding')}</div>
+		<div class="mb-2 text-sm font-medium flex items-center gap-2">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-3.5 text-gray-400">
+				<path fill-rule="evenodd" d="M8 1a3.5 3.5 0 0 0-3.5 3.5V5A2.5 2.5 0 0 0 2 7.5v4A2.5 2.5 0 0 0 4.5 14h7A2.5 2.5 0 0 0 14 11.5v-4A2.5 2.5 0 0 0 11.5 5v-.5A3.5 3.5 0 0 0 8 1Zm2.5 4v-.5a2.5 2.5 0 0 0-5 0V5h5Z" clip-rule="evenodd"/>
+			</svg>
+			{$i18n.t('Branding')}
+		</div>
 
 		<div class="space-y-3">
 			<div class="flex w-full justify-between items-center">
